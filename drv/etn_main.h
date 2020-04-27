@@ -4,7 +4,8 @@
 #include <linux/miscdevice.h>
 #include <linux/mutex.h>
 #include <linux/spinlock.h>
-#include <linux/fpga.h>
+#include <linux/interrupt.h>
+#include <linux/platform_device.h>
 #include "etn_dma.h"
 
 #define DRV_NAME "etn"
@@ -12,12 +13,6 @@
 #ifndef DRV_VERSION
 #define DRV_VERSION "0.0.1"
 #endif
-
-
-// Default size is 4M.
-// TODO:
-//   Move it to module params
-#define RX_BUF_SIZE (4*1024*1024)
 
 struct fpga_feature {
 	int cr;

@@ -25,7 +25,8 @@ module top(
 		input  wire        hps_uart0_RX, 
 		output wire        hps_uart0_TX,
 
-                output wire        uart_reset_n
+		input  wire        clk_25m_fpga,
+		output wire        uart_reset_n
 );
 assign uart_reset_n = 1'b1;
 
@@ -95,6 +96,12 @@ logic               sdram0_read;
 logic [127:0]       sdram0_writedata;
 logic [15:0]        sdram0_byteenable;
 logic               sdram0_write;
+
+pll pll_inst(
+    .refclk(clk_25m_fpga),
+    .rst(1'b0),
+    .outclk_0(clk_w)
+);
 
 
 //***********************************************************

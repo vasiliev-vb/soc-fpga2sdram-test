@@ -1,5 +1,6 @@
 #include "etn_main.h"
 #include <asm/io.h>
+#include <linux/device.h>
 
 
 
